@@ -24,9 +24,10 @@ namespace UDP_1
 
         private void listen()
         {
-            int port = int.Parse(textBox_port.Text);
-            if (textBox_port.Text!=null)
-            {                
+            
+            if (textBox_port.Text != null)//port不為空時 進入下列程式
+            {
+                int port = int.Parse(textBox_port.Text);
                 U = new UdpClient(port);
                 IPEndPoint EP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
                 while (true)
@@ -34,14 +35,22 @@ namespace UDP_1
                     byte[] B = U.Receive(ref EP);
                     textBox_ReceiveText.Text = Encoding.Default.GetString(B);
                 }
-            }
-            else 
-            {
-                U = new UdpClient();
-                IPEndPoint EP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
-            } 
+            }            
 
         }
+        /*rivate string myIP
+        {
+            string hostname = Dns.GetHostName();
+        IPAddress[] ip = Dns.GetHostEntry();
+        foreach(IPAddress it in)
+            {
+            if()
+                {
+                    return it
+                }
+            }
+
+        }*/
         private void Form1_Load(object sender, EventArgs e)
         {
             
